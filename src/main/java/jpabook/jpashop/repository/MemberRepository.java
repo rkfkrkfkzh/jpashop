@@ -2,11 +2,9 @@ package jpabook.jpashop.repository;
 
 import jpabook.jpashop.domain.Member;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository //데이터 액세스 계층의 구성 요소임을 나타내는 어노테이션, 이를 통해 Spring은 해당 클래스를 스캔하고 필요한 의존성 주입(Dependency Injection)을 처리
