@@ -1,6 +1,8 @@
 package jpabook.jpashop.repository;
 
 import jpabook.jpashop.domain.Member;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -8,10 +10,12 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository //데이터 액세스 계층의 구성 요소임을 나타내는 어노테이션, 이를 통해 Spring은 해당 클래스를 스캔하고 필요한 의존성 주입(Dependency Injection)을 처리
+@RequiredArgsConstructor //Spring Data Jpa가 있어서 가능함
 public class MemberRepository { //데이터베이스와의 상호작용을 담당, Member 엔티티의 저장 및 조회에 사용
 
-    @PersistenceContext//JPA의 EntityManager를 주입받기 위한 어노테이션, @PersistenceContext 어노테이션을 통해 EntityManager를 주입받아서 em 필드에 할당
-    private EntityManager em; //EntityManager는 JPA에서 엔티티를 영속화하고 관리하는 역할
+//    @PersistenceContext //JPA의 EntityManager를 주입받기 위한 어노테이션, @PersistenceContext 어노테이션을 통해 EntityManager를 주입받아서 em 필드에 할당
+//    @Autowired //다음 버전에서는 지원하도록 해준다는 소문
+    private final EntityManager em; //EntityManager는 JPA에서 엔티티를 영속화하고 관리하는 역할
 
     public void save(Member member) { //전달받은 Member 객체를 EntityManager를 사용하여 영속화
         em.persist(member); //em.persist(member)를 호출하여 Member 엔티티를 저장
