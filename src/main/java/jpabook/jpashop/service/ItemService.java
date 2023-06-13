@@ -1,10 +1,8 @@
 package jpabook.jpashop.service;
 
-import jpabook.jpashop.domain.item.Book;
 import jpabook.jpashop.domain.item.Item;
 import jpabook.jpashop.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
-import net.bytebuddy.matcher.InstanceTypeMatcher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,7 +20,7 @@ public class ItemService {
         itemRepository.save(item);
     }
 
-    @Transactional
+    @Transactional // 변경 감지를 되도록 사용 merge는 no
     public void updateItem(Long itemId, String name, int price, int stockQuantity) {
         Item findItem = itemRepository.findOne(itemId);
         findItem.setName(name);
