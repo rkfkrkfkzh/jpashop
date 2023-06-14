@@ -15,7 +15,7 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
-public class itemController {
+public class ItemController {
 
     private final ItemService itemService;
 
@@ -40,7 +40,7 @@ public class itemController {
 
     @GetMapping("/items")
     public String list(Model model) {
-        List<Item> items = itemService.findItem();
+        List<Item> items = itemService.findItems();
         model.addAttribute("items", items);
         return "items/itemList";
     }
